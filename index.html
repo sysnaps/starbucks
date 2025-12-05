@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Mood Finder - Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f0eb;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .coffee-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #006241;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2rem;
+            width: 100px;
+            height: 100px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #d4e9e2;
+        }
+
+        main {
+            min-height: 70vh;
+            padding: 2rem 0;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 98, 65, 0.9), rgba(0, 98, 65, 0.7)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            border-radius: 10px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #d4a574;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #b89162;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            background-color: #8B7355;
+        }
+
+        .btn-secondary:hover {
+            background-color: #756045;
+        }
+
+        .featured-coffees {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .coffee-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+
+        .coffee-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .coffee-img {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .coffee-info {
+            padding: 1.5rem;
+        }
+
+        .coffee-info h3 {
+            color: #006241;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background-color: #006241;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .coffee-img-1 {
+            background-color: #6F4E37;
+            /* Coffee brown */
+        }
+
+        .coffee-img-2 {
+            background-color: #A0522D;
+            /* Sienna */
+        }
+
+        .coffee-img-3 {
+            background-color: #D2691E;
+            /* Chocolate */
+        }
+
+        .page-title {
+            color: #006241;
+            border-bottom: 3px solid #d4a574;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .question {
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .question:last-child {
+            border-bottom: none;
+        }
+
+        .question h3 {
+            color: #006241;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .option {
+            background-color: #f5f0eb;
+            padding: 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .option:hover {
+            background-color: #e6ddd4;
+            transform: translateY(-3px);
+        }
+
+        .option.selected {
+            background-color: #d4a574;
+            color: white;
+            border-color: #b89162;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .results-container {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .coffee-options {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .coffee-option {
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            background-color: #f5f0eb;
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+        }
+
+        .coffee-option:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border-color: #d4a574;
+        }
+
+        .coffee-option-img {
+            height: 150px;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .score-badge {
+            display: inline-block;
+            background-color: #006241;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: #e6ddd4;
+            border-radius: 4px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #d4a574;
+            width: 0%;
+            transition: width 0.5s;
+        }
+
+        .quiz-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .btn-disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            nav ul li {
+                margin: 0.5rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .options {
+                grid-template-columns: 1fr;
+            }
+
+            .coffee-option {
+                min-width: 100%;
+            }
+
+            .quiz-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .quiz-navigation button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Home Page -->
+    <div id="home-page" class="page">
+        <header>
+            <div class="container header-content">
+                <div class="logo">
+                    <img class="logo-icon" src="images/starbucks.png" />
+                    <span>Coffee Mood Finder</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home-page" onclick="showPage('home-page')">Home</a></li>
+                        <li><a href="#menu-page" onclick="showPage('menu-page')">Menu</a></li>
+                        <li><a href="#quiz-page" onclick="showPage('quiz-page')">Quiz</a></li>
+                        <li><a href="#about-page" onclick="showPage('about-page')">About</a></li>
+                        <li><a href="#contact-page" onclick="showPage('contact-page')">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="container">
+            <section class="hero">
+                <h1>Find Your Perfect Coffee Match</h1>
+                <p>Discover which coffee beverage matches your current life situation.
+                    We've created unique coffee blends for every mood and moment.</p>
+                <a href="#quiz-page" onclick="showPage('quiz-page')" class="btn">Take the Quiz Now</a>
+            </section>
+
+            <h2 class="page-title">Featured Mood Coffees</h2>
+            <div class="featured-coffees">
+                <div class="coffee-card">
+                    <img class="coffee-image" src="images/coffee16.png" />
+                    <div class="coffee-info">
+                        <h3>Kids Cope</h3>
+                        <p>For stressed parents. Double-shot oat milk latte with honey and a whisper of lavender.</p>
+                    </div>
+                </div>
+
+                <div class="coffee-card">
+                    <img class="coffee-image" src="images/coffee17.png" />
+                    <div class="coffee-info">
+                        <h3>Hüttenschuss</h3>
+                        <p>Winter/après-ski special. Rich coffee with a kick - because sometimes you need more than
+                            warmth.</p>
+                    </div>
+                </div>
+
+                <div class="coffee-card">
+                    <img class="coffee-image" src="images/coffee18.png" />
+                    <div class="coffee-info">
+                        <h3>The Black-brick</h3>
+                        <p>The 'Black Brick'. 2 worlds 1 cup .
+                            Half Coffee half energy drink.
+                            When one alone would not cut it .</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>Coffee Mood Finder &copy; 2025 | All coffee descriptions are fictional creations</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Menu Page -->
+    <div id="menu-page" class="page" style="display: none;">
+        <header>
+            <div class="container header-content">
+                <div class="logo">
+                    <img class="logo-icon" src="images/starbucks.png" />
+                    <span>Coffee Mood Finder</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home-page" onclick="showPage('home-page')">Home</a></li>
+                        <li><a href="#menu-page" onclick="showPage('menu-page')">Menu</a></li>
+                        <li><a href="#quiz-page" onclick="showPage('quiz-page')">Quiz</a></li>
+                        <li><a href="#about-page" onclick="showPage('about-page')">About</a></li>
+                        <li><a href="#contact-page" onclick="showPage('contact-page')">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="container">
+            <h1 class="page-title">Our Coffee Menu</h1>
+            <p>We offer both classic favorites and unique scenario-based creations. All our mood coffees are specially
+                crafted to match different life situations.</p>
+
+            <h2 style="margin: 2rem 0 1rem 0; color: #006241;">Classic Coffees</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img class="coffee-image" src="images/coffee2.jpg" alt="Caffè Latte">
+                    <div class="coffee-info">
+                        <h3>Caffè Latte</h3>
+                        <p>Our classic espresso with steamed milk and light foam.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img class="coffee-image" src="images/coffee3.png" alt="Cappuccino">
+                    <div class="coffee-info">
+                        <h3>Cappuccino</h3>
+                        <p>Equal parts espresso, steamed milk, and thick foam.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img class="coffee-image" src="images/coffee4.png" alt="Cold Brew">
+                    <div class="coffee-info">
+                        <h3>Cold Brew</h3>
+                        <p>Smooth, slow-steeped coffee served over ice.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 style="margin: 2.5rem 0 1rem 0; color: #006241;">Scenario Mood Coffees</h2>
+            <div class="menu-items">
+                <!-- 15 Mood Coffees -->
+                <div class="menu-item">
+                    <img class="coffee-image" src="images/coffee5.png" alt="The Promotion Pint">
+                    <div class="coffee-info">
+                        <h3>The Promotion Pint</h3>
+                        <p>For celebratory moments. Sparkling cold brew with citrus zest and edible gold flakes.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img class="coffee-image" src="images/coffee6.png" alt="Breakup Brew">
+                    <div class="coffee-info">
+                        <h3>Breakup Brew</h3>
+                        <p>Comfort after heartache. Dark chocolate mocha with salted caramel and extra whipped cream.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img class="coffee-image" src="images/coffee7.png" alt="Holiday Hype Latte">
+                    <div class="coffee-info">
+                        <h3>Holiday Hype Latte</h3>
+                        <p>Excitement & anticipation. Coconut milk latte with pineapple syrup and a sprinkle of toasted
+                            coconut.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img class="coffee-image" src="images/coffee8.png" alt="Meeting Marathon Mocha">
+                    <div class="coffee-info">
+                        <h3>Meeting Marathon Mocha</h3>
+                        <p>Endurance rewards. Quad-shot mocha with adaptogenic mushrooms and dark cocoa.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img class="coffee-image" src="images/coffee9.png" alt="Raise Request Rocket Fuel">
+                    <div class="coffee-info">
+                        <h3>Raise Request Rocket Fuel</h3>
+                        <p>Confidence booster. Espresso with dark cocoa, cinnamon, and a dash of cayenne for courage.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img class="coffee-image" src="images/coffee10.png" alt="First Date Frother">
+                    <div class="coffee-info">
+                        <h3>First Date Frother</h3>
+                        <p>Nerves & hope. Rose-infused latte with cardamom and honey - impressive but not trying too
+                            hard.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img class="coffee-image" src="images/coffee11.png" alt="Project Complete Pour-Over">
+                    <div class="coffee-info">
+                        <h3>Project Complete Pour-Over</h3>
+                        <p>Accomplishment. Single-origin Ethiopian pour-over with notes of blueberry and dark chocolate.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img class="coffee-image" src="images/coffee12.png" alt="Rent's Paid Regular">
+                    <div class="coffee-info">
+                        <h3>Rent's Paid Regular</h3>
+                        <p>Simple, affordable pleasure. Just a damn good coffee. No frills, no fuss, no extra charge.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img class="coffee-image" src="images/coffee13.png" alt="All-Nighter Ambrosia">
+                    <div class="coffee-info">
+                        <h3>All-Nighter Ambrosia</h3>
+                        <p>Extreme focus fuel. Triple-shot americano with guarana and B-vitamin complex.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img class="coffee-image" src="images/coffee1.jpg" alt="Rainy Day Retreat" />
+                    <div class="coffee-info">
+                        <h3>Rainy Day Retreat</h3>
+                        <p>Cozy & contemplative. Spiced chai latte with steamed oat milk and a drizzle of maple syrup.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img class="coffee-image" src="images/coffee14.png" alt="Creative Block Breaker">
+                    <div class="coffee-info">
+                        <h3>Creative Block Breaker</h3>
+                        <p>Inspiration spark. Matcha-coconut latte with ginger and a hint of black pepper.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img class="coffee-image" src="images/coffee15.png" alt="Parents' Approval Potion">
+                    <div class="coffee-info">
+                        <h3>Parents' Approval Potion</h3>
+                        <p>Impress & calm. Classic Italian cappuccino made perfect - because sometimes tradition wins.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- User's 3 creations -->
+                <div class="menu-item">
+                    <img class="coffee-image" src="images/coffee16.png" alt="Kids Cope">
+                    <div class="coffee-info">
+                        <h3>Kids Cope</h3>
+                        <p>For stressed parents. Double-shot oat milk latte with honey and lavender.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img class="coffee-image" src="images/coffee17.png" alt="Hüttenschuss">
+                    <div class="coffee-info">
+                        <h3>Hüttenschuss</h3>
+                        <p>Winter/après-ski special. Rich coffee with a rum kick - because sometimes you need more than
+                            warmth.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img class="coffee-image" src="images/coffee18.png" alt="The Black-brick">
+                    <div class="coffee-info">
+                        <h3>The Black-brick</h3>
+                        <p>The 'Black Brick'. 2 worlds 1 cup .
+                            Half Coffee half energy drink.
+                            When one alone would not cut it .
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>Coffee Mood Finder &copy; 2025 | All coffee descriptions are fictional creations</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Quiz Page -->
+    <div id="quiz-page" class="page" style="display: none;">
+        <header>
+            <div class="container header-content">
+                <div class="logo">
+                    <img class="logo-icon" src="images/starbucks.png" />
+                    <span>Coffee Mood Finder</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home-page" onclick="showPage('home-page')">Home</a></li>
+                        <li><a href="#menu-page" onclick="showPage('menu-page')">Menu</a></li>
+                        <li><a href="#quiz-page" onclick="showPage('quiz-page')">Quiz</a></li>
+                        <li><a href="#about-page" onclick="showPage('about-page')">About</a></li>
+                        <li><a href="#contact-page" onclick="showPage('contact-page')">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="container">
+            <h1 class="page-title">Coffee Scenario Quiz</h1>
+            <p>Answer these 5 questions about your current life situation to find your perfect coffee match.
+                <strong>Questions are randomized each time!</strong>
+            </p>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="quiz-progress"></div>
+            </div>
+
+            <div class="quiz-container" id="dynamic-quiz-container">
+                <!-- Quiz content will be loaded here by JavaScript -->
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>Coffee Mood Finder &copy; 2025 | All coffee descriptions are fictional creations</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Results Page -->
+    <div id="results-page" class="page" style="display: none;">
+        <header>
+            <div class="container header-content">
+                <div class="logo">
+                    <img class="logo-icon" src="images/starbucks.png" />
+
+                    <span>Coffee Mood Finder</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home-page" onclick="showPage('home-page')">Home</a></li>
+                        <li><a href="#menu-page" onclick="showPage('menu-page')">Menu</a></li>
+                        <li><a href="#quiz-page" onclick="showPage('quiz-page')">Quiz</a></li>
+                        <li><a href="#about-page" onclick="showPage('about-page')">About</a></li>
+                        <li><a href="#contact-page" onclick="showPage('contact-page')">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="container">
+            <div class="results-container">
+                <h1 class="page-title">Your Perfect Coffee Matches!</h1>
+                <p>Based on your answers, here are two coffee options that match your current life situation. Choose the
+                    one that appeals to you most.</p>
+
+                <div class="coffee-options" id="results-options">
+                    <!-- Results will be inserted here by JavaScript -->
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <p>Not feeling these options? <a href="#quiz-page" onclick="showPage('quiz-page')"
+                            style="color: #006241; font-weight: bold;">Retake the quiz</a> or <a href="#menu-page"
+                            onclick="showPage('menu-page')" style="color: #006241; font-weight: bold;">browse our full
+                            menu</a>.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>Coffee Mood Finder &copy; 2025 | All coffee descriptions are fictional creations</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- About Page -->
+    <div id="about-page" class="page" style="display: none;">
+        <header>
+            <div class="container header-content">
+                <div class="logo">
+                    <img class="logo-icon" src="images/starbucks.png" />
+                    <span>Coffee Mood Finder</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home-page" onclick="showPage('home-page')">Home</a></li>
+                        <li><a href="#menu-page" onclick="showPage('menu-page')">Menu</a></li>
+                        <li><a href="#quiz-page" onclick="showPage('quiz-page')">Quiz</a></li>
+                        <li><a href="#about-page" onclick="showPage('about-page')">About</a></li>
+                        <li><a href="#contact-page" onclick="showPage('contact-page')">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="container">
+            <h1 class="page-title">About Coffee Mood Finder</h1>
+            <div class="quiz-container">
+                <p>Welcome to Starbucks Coffee Mood Finder, where we believe your coffee should match your life
+                    situation!</p>
+
+                <h3 style="color: #006241; margin: 1.5rem 0 1rem 0;">The Story</h3>
+                <p>We started with a simple idea: what if your coffee could be perfectly tailored to what's actually
+                    happening in your life? Instead of just choosing between light or dark roast, what if you could
+                    choose a coffee based on whether you just got promoted, survived a Monday meeting marathon, or need
+                    to cope with kids?</p>
+
+                <h3 style="color: #006241; margin: 1.5rem 0 1rem 0;">How It Works</h3>
+                <p>Our quiz analyzes your current life scenario, preferences, and vibe to recommend the perfect coffee
+                    from our menu. Each of our "scenario coffees" is crafted with specific ingredients and vibes to
+                    complement different moments.</p>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="#quiz-page" onclick="showPage('quiz-page')" class="btn">Find Your Coffee Match</a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>Coffee Mood Finder &copy; 2025 | All coffee descriptions are fictional creations</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact-page" class="page" style="display: none;">
+        <header>
+            <div class="container header-content">
+                <div class="logo">
+                    <img class="logo-icon" src="images/starbucks.png" />
+                    <span>Coffee Mood Finder</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home-page" onclick="showPage('home-page')">Home</a></li>
+                        <li><a href="#menu-page" onclick="showPage('menu-page')">Menu</a></li>
+                        <li><a href="#quiz-page" onclick="showPage('quiz-page')">Quiz</a></li>
+                        <li><a href="#about-page" onclick="showPage('about-page')">About</a></li>
+                        <li><a href="#contact-page" onclick="showPage('contact-page')">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="container">
+            <h1 class="page-title">Contact Us</h1>
+            <div class="quiz-container">
+                <p>Have questions, suggestions, or just want to talk coffee? We'd love to hear from you!</p>
+
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div>
+                        <h3 style="color: #006241; margin-bottom: 1rem;">Contact Information</h3>
+                        <p><strong>Email:</strong></p>
+                        <a href="mailto:contrac.query.ace@gmail.com">contrac.query.ace@gmail.com</a>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>Coffee Mood Finder &copy; 2025 | All coffee descriptions are fictional creations</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // ========== QUESTION BANK (15 TOTAL QUESTIONS) ==========
+        const questionBank = [
+            {
+                id: 1,
+                text: "How's life treating you?",
+                options: [
+                    { text: "\"Like I'm conquering the world!\"", value: "A", scores: { "Promotion": 3, "Rocket": 2, "Black": 1 } },
+                    { text: "\"Could use a hug and a warm blanket\"", value: "B", scores: { "Breakup": 3, "Rainy": 2, "Hütten": 1 } },
+                    { text: "\"Somewhere between chaos and coffee\"", value: "C", scores: { "Kids": 3, "Meeting": 2, "All-Night": 1 } }
+                ]
+            },
+            {
+                id: 2,
+                text: "Pick your power outfit for today:",
+                options: [
+                    { text: "\"Suit up, baby!\"", value: "A", scores: { "Promotion": 3, "Parents": 2, "FirstDate": 1 } },
+                    { text: "\"Yoga pants & an oversized sweater\"", value: "B", scores: { "Rainy": 3, "Breakup": 1, "Hütten": 1 } },
+                    { text: "\"A uniform with all my hard-earned medals\"", value: "C", scores: { "Project": 3, "Black": 2, "Meeting": 1 } }
+                ]
+            },
+            {
+                id: 3,
+                text: "If you had the choice right now:",
+                options: [
+                    { text: "\"Sit on a beach with a book\"", value: "A", scores: { "Holiday": 3, "Rainy": 2, "Breakup": 1 } },
+                    { text: "\"Design a New York skyscraper\"", value: "B", scores: { "Creative": 3, "Rocket": 2, "Black": 1 } },
+                    { text: "\"Go back to bed for 3 more hours\"", value: "C", scores: { "All-Night": 2, "Kids": 3, "Meeting": 1 } }
+                ]
+            },
+            {
+                id: 4,
+                text: "If you were running for office:",
+                options: [
+                    { text: "\"Maybe We Can!\" (Optimistic pragmatism)", value: "A", scores: { "FirstDate": 3, "Creative": 1, "Promotion": 1 } },
+                    { text: "\"Colonize the Sun!\" (Bold ambition)", value: "B", scores: { "Black": 3, "Rocket": 2, "All-Night": 1 } },
+                    { text: "\"State-Subsidized Morning Coffee\" (Practical comforts)", value: "C", scores: { "Rent": 3, "Breakup": 1, "Kids": 1 } }
+                ]
+            },
+            {
+                id: 5,
+                text: "Your relationship with caffeine:",
+                options: [
+                    { text: "\"We're in a committed, 24/7 relationship\"", value: "A", scores: { "All-Night": 3, "Black": 2, "Meeting": 1 } },
+                    { text: "\"It's complicated - sometimes friends, sometimes foes\"", value: "B", scores: { "Kids": 3, "Meeting": 2, "Creative": 1 } },
+                    { text: "\"Just looking for a warm hug in a mug\"", value: "C", scores: { "Hütten": 3, "Rainy": 2, "Breakup": 1 } }
+                ]
+            },
+            {
+                id: 6,
+                text: "Your morning started with:",
+                options: [
+                    { text: "An alarm you actually listened to", value: "A", scores: { "Promotion": 2, "Parents": 1, "Project": 1 } },
+                    { text: "A child/dog/cat jumping on you", value: "B", scores: { "Kids": 3, "Meeting": 2, "All-Night": 1 } },
+                    { text: "Hitting snooze 4 times", value: "C", scores: { "All-Night": 2, "Rent": 1, "Breakup": 1 } }
+                ]
+            },
+            {
+                id: 7,
+                text: "What's your current inbox situation?",
+                options: [
+                    { text: "Inbox zero, baby!", value: "A", scores: { "Project": 3, "Promotion": 1, "Parents": 1 } },
+                    { text: "347 unread and avoiding it", value: "B", scores: { "Breakup": 2, "Rainy": 1, "Kids": 1 } },
+                    { text: "Selective attention - only important stuff", value: "C", scores: { "Creative": 2, "Rocket": 1, "Black": 1 } }
+                ]
+            },
+            {
+                id: 8,
+                text: "Choose a fictional mentor:",
+                options: [
+                    { text: "Leslie Knope (optimistic, driven)", value: "A", scores: { "Promotion": 3, "FirstDate": 2, "Creative": 1 } },
+                    { text: "Ron Swanson (pragmatic, anti-bureaucracy)", value: "B", scores: { "Rent": 3, "Black": 1, "Breakup": 1 } },
+                    { text: "Luna Lovegood (quirky, creative)", value: "C", scores: { "Creative": 3, "Holiday": 1, "FirstDate": 1 } }
+                ]
+            },
+            {
+                id: 9,
+                text: "Your ideal Saturday involves:",
+                options: [
+                    { text: "Crossing things off a to-do list", value: "A", scores: { "Project": 3, "Promotion": 1, "Meeting": 1 } },
+                    { text: "Absolutely nothing scheduled", value: "B", scores: { "Rainy": 3, "Breakup": 1, "Hütten": 1 } },
+                    { text: "Trying something completely new", value: "C", scores: { "Holiday": 3, "Creative": 2, "FirstDate": 1 } }
+                ]
+            },
+            {
+                id: 10,
+                text: "How do you handle stress?",
+                options: [
+                    { text: "Make a spreadsheet about it", value: "A", scores: { "Meeting": 3, "Project": 2, "Promotion": 1 } },
+                    { text: "Retreat under a blanket", value: "B", scores: { "Breakup": 3, "Kids": 2, "Rainy": 1 } },
+                    { text: "Channel it into something productive", value: "C", scores: { "Rocket": 3, "Black": 2, "Creative": 1 } }
+                ]
+            },
+            {
+                id: 11,
+                text: "Pick a superpower:",
+                options: [
+                    { text: "Teleportation (skip the commute)", value: "A", scores: { "All-Night": 2, "Promotion": 1, "Meeting": 1 } },
+                    { text: "Time freezing (nap anytime)", value: "B", scores: { "Kids": 3, "Rainy": 1, "Breakup": 1 } },
+                    { text: "Instant expertise (master any skill)", value: "C", scores: { "Creative": 3, "Rocket": 2, "Project": 1 } }
+                ]
+            },
+            {
+                id: 12,
+                text: "Your phone background is:",
+                options: [
+                    { text: "An inspirational quote", value: "A", scores: { "Promotion": 2, "FirstDate": 1, "Rocket": 1 } },
+                    { text: "A pet/kid/significant other", value: "B", scores: { "Kids": 3, "Breakup": 1, "Parents": 1 } },
+                    { text: "Default wallpaper (too busy to change it)", value: "C", scores: { "Meeting": 3, "All-Night": 1, "Rent": 1 } }
+                ]
+            },
+            {
+                id: 13,
+                text: "What's in your bag right now?",
+                options: [
+                    { text: "Laptop, planner, charger", value: "A", scores: { "Meeting": 3, "Project": 2, "Promotion": 1 } },
+                    { text: "A book, snacks, headphones", value: "B", scores: { "Rainy": 3, "Holiday": 1, "Creative": 1 } },
+                    { text: "The bare minimum (wallet, keys, phone)", value: "C", scores: { "Rent": 3, "Hütten": 1, "Black": 1 } }
+                ]
+            },
+            {
+                id: 14,
+                text: "Your ideal vacation involves:",
+                options: [
+                    { text: "Adventure and exploration", value: "A", scores: { "Holiday": 3, "Creative": 2, "Black": 1 } },
+                    { text: "Lounging and relaxation", value: "B", scores: { "Rainy": 3, "Breakup": 1, "Hütten": 1 } },
+                    { text: "Visiting family/friends", value: "C", scores: { "Parents": 3, "Kids": 2, "FirstDate": 1 } }
+                ]
+            },
+            {
+                id: 15,
+                text: "Finish this sentence: 'I'll relax when...'",
+                options: [
+                    { text: "I've achieved my goals", value: "A", scores: { "Promotion": 3, "Project": 2, "Rocket": 1 } },
+                    { text: "The kids are asleep", value: "B", scores: { "Kids": 3, "Meeting": 1, "All-Night": 1 } },
+                    { text: "I give myself permission to", value: "C", scores: { "Breakup": 2, "Rainy": 3, "Hütten": 1 } }
+                ]
+            }
+        ];
+
+        // ========== COFFEE DATABASE ==========
+        const coffeeDB = [
+            { id: 1, name: "The Promotion Pint", key: "Promotion", description: "Sparkling cold brew with citrus zest and edible gold flakes. For celebratory moments.", image: "images/coffee5.png" },
+            { id: 2, name: "Breakup Brew", key: "Breakup", description: "Dark chocolate mocha with salted caramel and extra whipped cream. Comfort after heartache.", image: "images/coffee6.png" },
+            { id: 3, name: "Holiday Hype Latte", key: "Holiday", description: "Coconut milk latte with pineapple syrup and toasted coconut. For excitement & anticipation.", image: "images/coffee7.png" },
+            { id: 4, name: "Meeting Marathon Mocha", key: "Meeting", description: "Quad-shot mocha with adaptogenic mushrooms and dark cocoa. Endurance rewards.", image: "images/coffee8.png" },
+            { id: 5, name: "Raise Request Rocket Fuel", key: "Rocket", description: "Espresso with dark cocoa, cinnamon, and a dash of cayenne. Confidence booster.", image: "images/coffee9.png" },
+            { id: 6, name: "First Date Frother", key: "FirstDate", description: "Rose-infused latte with cardamom and honey. Impressive but not trying too hard.", image: "images/coffee10.png" },
+            { id: 7, name: "Project Complete Pour-Over", key: "Project", description: "Single-origin Ethiopian with notes of blueberry and dark chocolate. For accomplishments.", image: "images/coffee10.png" },
+            { id: 8, name: "Rent's Paid Regular", key: "Rent", description: "Just a damn good coffee. No frills, no fuss, no extra charge. Simple pleasure.", image: "images/coffee11.png" },
+            { id: 9, name: "All-Nighter Ambrosia", key: "All-Night", description: "Triple-shot americano with guarana and B-vitamin complex. Extreme focus fuel.", image: "images/coffee12.png" },
+            { id: 10, name: "Rainy Day Retreat", key: "Rainy", description: "Spiced chai latte with steamed oat milk and maple syrup. Cozy & contemplative.", image: "images/coffee13.png" },
+            { id: 11, name: "Creative Block Breaker", key: "Creative", description: "Matcha-coconut latte with ginger and black pepper. Inspiration spark.", image: "images/coffee14.png" },
+            { id: 12, name: "Parents' Approval Potion", key: "Parents", description: "Classic Italian cappuccino made perfect. Tradition wins.", image: "images/coffee15.png" },
+            { id: 13, name: "Kids Cope", key: "Kids", description: "Double-shot oat milk latte with honey and lavender. For stressed parents.", image: "images/coffee16.png" },
+            { id: 14, name: "Hüttenschuss", key: "Hütten", description: "Rich coffee with a rum kick. Winter/après-ski special.", image: "images/coffee17.png" },
+            { id: 15, name: "The Black-brick", key: "Black", description: "Cold brew with electrolytes and lasting caffeine boost. Coffee-energy hybrid.", image: "images/coffee18.png" }
+        ];
+
+        // ========== QUIZ STATE ==========
+        let currentQuiz = {
+            questions: [],
+            answers: {},
+            currentQuestionIndex: 0
+        };
+
+        // ========== PAGE NAVIGATION ==========
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.style.display = 'none';
+            });
+
+            document.getElementById(pageId).style.display = 'block';
+
+            if (pageId === 'quiz-page') {
+                initializeQuiz();
+            }
+        }
+
+        // ========== QUIZ FUNCTIONS ==========
+        function initializeQuiz() {
+            // Reset quiz state
+            currentQuiz = {
+                questions: getRandomQuestions(5),
+                answers: {},
+                currentQuestionIndex: 0
+            };
+
+            // Display first question
+            displayCurrentQuestion();
+            updateProgressBar();
+        }
+
+        function getRandomQuestions(count) {
+            // Shuffle the question bank and take 'count' questions
+            const shuffled = [...questionBank].sort(() => Math.random() - 0.5);
+            return shuffled.slice(0, count);
+        }
+
+        function displayCurrentQuestion() {
+            const container = document.getElementById('dynamic-quiz-container');
+            const question = currentQuiz.questions[currentQuiz.currentQuestionIndex];
+
+            container.innerHTML = `
+                <div class="question">
+                    <h3>${currentQuiz.currentQuestionIndex + 1}. ${question.text}</h3>
+                    <div class="options">
+                        ${question.options.map((option, index) => `
+                            <div class="option ${currentQuiz.answers[currentQuiz.currentQuestionIndex] === option.value ? 'selected' : ''}" 
+                                 onclick="selectAnswer(${currentQuiz.currentQuestionIndex}, '${option.value}')">
+                                ${option.text}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                <div class="quiz-navigation">
+                    ${currentQuiz.currentQuestionIndex > 0 ?
+                    '<button class="btn btn-secondary" onclick="prevQuestion()">← Previous</button>' :
+                    '<div></div>'}
+                    ${currentQuiz.currentQuestionIndex < currentQuiz.questions.length - 1 ?
+                    '<button class="btn" onclick="nextQuestion()">Next →</button>' :
+                    '<button class="btn" onclick="calculateResults()" id="results-btn">Get My Coffee Matches</button>'}
+                </div>
+            `;
+
+            updateProgressBar();
+        }
+
+        function selectAnswer(questionIndex, answerValue) {
+            // Save the answer
+            currentQuiz.answers[questionIndex] = answerValue;
+
+            // Update the display
+            const options = document.querySelectorAll('.option');
+            options.forEach(opt => {
+                opt.classList.remove('selected');
+            });
+
+            // Find and select the clicked option
+            const clickedOption = Array.from(options).find(opt =>
+                opt.textContent.includes(currentQuiz.questions[questionIndex].options.find(o => o.value === answerValue).text)
+            );
+            if (clickedOption) {
+                clickedOption.classList.add('selected');
+            }
+
+            // Enable results button if all questions answered
+            if (Object.keys(currentQuiz.answers).length === currentQuiz.questions.length) {
+                const resultsBtn = document.getElementById('results-btn');
+                if (resultsBtn) {
+                    resultsBtn.disabled = false;
+                }
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuiz.currentQuestionIndex < currentQuiz.questions.length - 1) {
+                currentQuiz.currentQuestionIndex++;
+                displayCurrentQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuiz.currentQuestionIndex > 0) {
+                currentQuiz.currentQuestionIndex--;
+                displayCurrentQuestion();
+            }
+        }
+
+        function updateProgressBar() {
+            const progress = ((currentQuiz.currentQuestionIndex + 1) / currentQuiz.questions.length) * 100;
+            document.getElementById('quiz-progress').style.width = `${progress}%`;
+        }
+
+        function calculateResults() {
+            // Check if all questions are answered
+            if (Object.keys(currentQuiz.answers).length < currentQuiz.questions.length) {
+                alert('Please answer all questions before getting your results.');
+                return;
+            }
+
+            // Calculate scores for each coffee
+            const coffeeScores = coffeeDB.map(coffee => {
+                let totalScore = 0;
+
+                // For each answered question
+                currentQuiz.questions.forEach((question, qIndex) => {
+                    const answerValue = currentQuiz.answers[qIndex];
+                    const chosenOption = question.options.find(opt => opt.value === answerValue);
+
+                    if (chosenOption && chosenOption.scores[coffee.key]) {
+                        totalScore += chosenOption.scores[coffee.key];
+                    }
+                });
+
+                return {
+                    ...coffee,
+                    score: totalScore,
+                    maxScore: currentQuiz.questions.length * 3 // Max possible score per coffee
+                };
+            });
+
+            // Sort by score (highest first)
+            coffeeScores.sort((a, b) => b.score - a.score);
+
+            // Get top 2
+            const topCoffees = coffeeScores.slice(0, 2);
+
+            // Display results
+            displayResults(topCoffees);
+            showPage('results-page');
+        }
+
+        function displayResults(topCoffees) {
+            const resultsContainer = document.getElementById('results-options');
+            resultsContainer.innerHTML = '';
+
+            topCoffees.forEach((coffee, index) => {
+                const matchPercentage = Math.round((coffee.score / (coffee.maxScore * 0.75)) * 100);
+                const limitedPercentage = Math.min(matchPercentage, 95); // Cap at 95% so it feels real
+
+                const coffeeOption = document.createElement('div');
+                coffeeOption.className = 'coffee-option';
+                coffeeOption.innerHTML = `
+                    <div>
+                    <div class="coffee-image" src="${coffee.image}"/>
+                    <h3>${coffee.name}</h3>
+                    <p>${coffee.description}</p>
+                    <div class="score-badge">${limitedPercentage}% Match</div>
+                    <button class="btn" style="margin-top: 1.5rem; padding: 10px 25px;" 
+                            onclick="alert('Excellent choice! You\\'ve selected ${coffee.name}. ☕')">
+                        Choose This Coffee
+                    </button>
+                    </div>
+                `;
+
+                resultsContainer.appendChild(coffeeOption);
+            });
+        }
+
+        // ========== INITIALIZE ==========
+        document.addEventListener('DOMContentLoaded', function () {
+            showPage('home-page');
+        });
+    </script>
+</body>
+
+</html>
